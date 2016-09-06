@@ -78,30 +78,30 @@ If you want to remove a registered event you can just use this function:
 In Keycap you can use a bunch of different KeyCodes.
 
 ###### Special buttons
--Space
--Tab
--Enter
--Shift
--Backspace
--Ctrl
--Alt
--Pause
--CapsLock
--Esc
--PageUp
--PageDown
--End
--Home
--Left
--Right
--Up
--Down
--Ins
--Del
--Help
--PrintScreen
--Select
--NumLock
+- Space
+- Tab
+- Enter
+- Shift
+- Backspace
+- Ctrl
+- Alt
+- Pause
+- CapsLock
+- Esc
+- PageUp
+- PageDown
+- End
+- Home
+- Left
+- Right
+- Up
+- Down
+- Ins
+- Del
+- Help
+- PrintScreen
+- Select
+- NumLock
  
 ###### Letters
 -A
