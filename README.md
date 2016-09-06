@@ -147,7 +147,7 @@ In Keycap you can use a bunch of different KeyCodes.
 Thanks for using Keycap.
 If you have any questions or tips make sure to contact us at: vkieft@dreamincode.nl
 
-	**© Copyright 2016 DreamInCode B.V.**
+	© Copyright 2016 DreamInCode B.V.
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
