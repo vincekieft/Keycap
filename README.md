@@ -28,18 +28,48 @@ The methodes are devided under 3 different categories:
 ###### On Update Input
 The OnUpdateInput methodes are meant to check if a key is pressed down/up in a certain frame. You can use it like this:
 ```c#
-	// On pressed down event
+	// On pressed down
 	if(Input.onKeyDown(KeyCode.Space)){
 		// if the space key is pressed down
 	}
 	
-	// On pressed down event
+	// On key released
 	if(Input.onKeyUp(KeyCode.Space)){
 		// if the space key is released
 	}
 	
-	// On pressed down event
+	// On constantly pressed down
 	if(Input.onKeyPressed(KeyCode.Space)){
 		// if the space key is constantly pressed down
 	}
+```
+
+###### Registered Events
+The registered events are ment to work outside a updating enviroment.
+These functions register a key event and gives a callback everytime the events occurs.
+Use the registered events like this:
+```c#
+	// Register on key down event.
+	// First parm: The key you want to target.
+	// Second parm: The void you want to use as callback
+	// Thirth (Optional) parm: Do you want this event to occur once or until stopped.
+	Input.registerOnKeyDown(KeyCode.Space,CallbackVoid,true);
+	
+	// Register on key constantly pressed.
+	// First parm: The key you want to target.
+	// Second parm: The void you want to use as callback
+	Input.registerOnKeyPressed(KeyCode.Space,CallbackVoid);
+	
+	// Register on key released.
+	// First parm: The key you want to target.
+	// Second parm: The void you want to use as callback
+	// Thirth (Optional) parm: Do you want this event to occur once or until stopped.
+	Input.registerOnKeyUp(KeyCode.Space,CallbackVoid,true);
+```
+
+###### Remove
+If you want to remove a registered event you can just use this function:
+```c#
+	// remove all the registered events from a key
+	Input.removeKeyRegister(KeyCode.Space);
 ```
