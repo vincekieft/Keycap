@@ -73,3 +73,72 @@ If you want to remove a registered event you can just use this function:
 	// remove all the registered events from a key
 	Input.removeKeyRegister(KeyCode.Space);
 ```
+
+#Wich KeyCodes can i use?
+In Keycap you can use a bunch of different KeyCodes.
+
+###### Special buttons
+-Space
+-Tab
+-Enter
+-Shift
+-Backspace
+-Ctrl
+-Alt
+-Pause
+-CapsLock
+-Esc
+-PageUp
+-PageDown
+-End
+-Home
+-Left
+-Right
+-Up
+-Down
+-Ins
+-Del
+-Help
+-PrintScreen
+-Select
+-NumLock
+ 
+###### Letters
+-A
+-B
+-C
+-D
+-E
+-F
+-G
+-H
+-I
+-J
+-K
+-L
+-M
+-N
+-O
+-P
+-Q
+-R
+-S
+-T
+-U
+-V
+-W
+-X
+-Y
+-Z
+
+###### Numbers
+-Zero
+-One
+-Two
+-Three
+-Four
+-Five
+-Six
+-Seven
+-Eight
+-Nine
