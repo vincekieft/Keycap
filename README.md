@@ -7,8 +7,15 @@ First you have to download and insert the Keycab library into your project.
 Then make sure you have a reference to the Keycab library.
 Once that is done you just have to write:
 
-	Using Keycab;
+	using Keycap;
+	
+And in the very beginnin of you application somewhere you have to write:
+
+	Input.initInput();
+	
+This function will initialize the library and register the keyboard hook.
 
 Now Keycab is setup and ready to use.
 
-#Example
+#How to use?
+Keycab knows 8 different methodes you can use.
