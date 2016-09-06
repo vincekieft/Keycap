@@ -1,5 +1,5 @@
 # Keycap
-Keycap is a c# .Net library, for super easy key board input. Keycap can be used in all different c# .Net projects cause it uses a low level keyboard hook.
+Keycap is a c# .Net library, for super easy keyboard input. Keycap can be used in all different c# .Net projects cause it uses a low level keyboard hook.
 
 # How to implement Keycab?
 Keycab is very easy to use and implement.
