@@ -1,5 +1,5 @@
 # Keycap
-Keycap is a c# .net library, for super easy key board input. Keycap can be used in all different c# .net projects cause it uses a low level keyboard hook.
+Keycap is a c# .Net library, for super easy key board input. Keycap can be used in all different c# .Net projects cause it uses a low level keyboard hook.
 
 # How to implement Keycab?
 Keycab is very easy to use and implement.
@@ -9,7 +9,7 @@ Once that is done you just have to write:
 ```c#
 	using Keycap;
 ```
-And in the very beginnin of you application somewhere you have to write:
+And in the very beginning of you application somewhere you have to write:
 ```c#
 	Input.initInput();
 ```
@@ -18,15 +18,15 @@ This function will initialize the library and register the keyboard hook.
 Now Keycab is setup and ready to use.
 
 #How to use?
-Keycab knows 8 different methodes you can use.
-The methodes are devided under 3 different categories:
+Keycab knows 8 different methods you can use.
+The methods are divided under 3 different categories:
 
 - OnUpdateInput
 - RegisteredEvents
 - Remove
 
 ###### On Update Input
-The OnUpdateInput methodes are meant to check if a key is pressed down/up in a certain frame. You can use it like this:
+The OnUpdateInput methods are meant to check if a key is pressed down/up in a certain frame. You can use it like this:
 ```c#
 	// On pressed down
 	if(Input.onKeyDown(KeyCode.Space)){
@@ -45,14 +45,14 @@ The OnUpdateInput methodes are meant to check if a key is pressed down/up in a c
 ```
 
 ###### Registered Events
-The registered events are ment to work outside a updating enviroment.
+The registered events are meant to work outside a updating environment.
 These functions register a key event and gives a callback everytime the events occurs.
 Use the registered events like this:
 ```c#
 	// Register on key down event.
 	// First parm: The key you want to target.
 	// Second parm: The void you want to use as callback
-	// Thirth (Optional) parm: Do you want this event to occur once or until stopped.
+	// Third (Optional) parm: Do you want this event to occur once or until stopped.
 	Input.registerOnKeyDown(KeyCode.Space,CallbackVoid,true);
 	
 	// Register on key constantly pressed.
@@ -74,7 +74,7 @@ If you want to remove a registered event you can just use this function:
 	Input.removeKeyRegister(KeyCode.Space);
 ```
 
-#Wich KeyCodes can i use?
+#What KeyCodes can I use?
 In Keycap you can use a bunch of different KeyCodes.
 
 ###### Special buttons
@@ -145,6 +145,18 @@ In Keycap you can use a bunch of different KeyCodes.
 
 # End
 Thanks for using Keycap.
-If you have any question or tips make sure to contact me at: info@dreamincode.nl
+If you have any questions or tips make sure to contact us at: vkieft@dreamincode.nl
 
-© DreamInCode B.V. 2016
+© Copyright 2016 DreamInCode B.V.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
