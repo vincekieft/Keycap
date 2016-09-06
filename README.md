@@ -6,13 +6,13 @@ Keycab is very easy to use and implement.
 First you have to download and insert the Keycab library into your project.
 Then make sure you have a reference to the Keycab library.
 Once that is done you just have to write:
-'''c#
+```c#
 	using Keycap;
-'''
+```
 And in the very beginnin of you application somewhere you have to write:
-'''c#
+```c#
 	Input.initInput();
-'''
+```
 This function will initialize the library and register the keyboard hook.
 
 Now Keycab is setup and ready to use.
