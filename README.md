@@ -19,3 +19,27 @@ Now Keycab is setup and ready to use.
 
 #How to use?
 Keycab knows 8 different methodes you can use.
+The methodes are devided under 3 different categories:
+
+- OnUpdateInput
+- RegisteredEvents
+- Remove
+
+###### On Update Input
+The OnUpdateInput methodes are meant to check if a key is pressed down/up in a certain frame. You can use it like this:
+```c#
+	// On pressed down event
+	if(Input.onKeyDown(KeyCode.Space)){
+		// if the space key is pressed down
+	}
+	
+	// On pressed down event
+	if(Input.onKeyUp(KeyCode.Space)){
+		// if the space key is released
+	}
+	
+	// On pressed down event
+	if(Input.onKeyPressed(KeyCode.Space)){
+		// if the space key is constantly pressed down
+	}
+```
