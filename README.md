@@ -104,41 +104,47 @@ In Keycap you can use a bunch of different KeyCodes.
 - NumLock
  
 ###### Letters
--A
--B
--C
--D
--E
--F
--G
--H
--I
--J
--K
--L
--M
--N
--O
--P
--Q
--R
--S
--T
--U
--V
--W
--X
--Y
--Z
+- A
+- B
+- C
+- D
+- E
+- F
+- G
+- H
+- I
+- J
+- K
+- L
+- M
+- N
+- O
+- P
+- Q
+- R
+- S
+- T
+- U
+- V
+- W
+- X
+- Y
+- Z
 
 ###### Numbers
--Zero
--One
--Two
--Three
--Four
--Five
--Six
--Seven
--Eight
--Nine
+- Zero
+- One
+- Two
+- Three
+- Four
+- Five
+- Six
+- Seven
+- Eight
+- Nine
+
+# End
+Thanks for using Keycap.
+If you have any question or tips make sure to contact me at: info@dreamincode.nl
+
+© DreamInCode B.V. 2016
