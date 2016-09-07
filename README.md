@@ -143,6 +143,20 @@ In Keycap you can use a bunch of different KeyCodes.
 - Eight
 - Nine
 
+###### Function keys
+- F1
+- F2
+- F3
+- F4
+- F5
+- F6
+- F7
+- F8
+- F9
+- F10
+- F11
+- F12
+
 # End
 Thanks for using Keycap.
 If you have any questions or tips make sure to contact us at: vkieft@dreamincode.nl

@@ -76,6 +76,20 @@ namespace Keycap.InputEngine
             keys.Add(keyCode.Seven, new keyObj(55));
             keys.Add(keyCode.Eight, new keyObj(56));
             keys.Add(keyCode.Nine, new keyObj(57));
+
+            // function keys
+            keys.Add(keyCode.F1, new keyObj(112));
+            keys.Add(keyCode.F2, new keyObj(113));
+            keys.Add(keyCode.F3, new keyObj(114));
+            keys.Add(keyCode.F4, new keyObj(115));
+            keys.Add(keyCode.F5, new keyObj(116));
+            keys.Add(keyCode.F6, new keyObj(117));
+            keys.Add(keyCode.F7, new keyObj(118));
+            keys.Add(keyCode.F8, new keyObj(119));
+            keys.Add(keyCode.F9, new keyObj(120));
+            keys.Add(keyCode.F10, new keyObj(121));
+            keys.Add(keyCode.F11, new keyObj(122));
+            keys.Add(keyCode.F12, new keyObj(123));
         }
 
         public static keycodes getInstance()
@@ -360,6 +374,20 @@ namespace Keycap
         Six,
         Seven,
         Eight,
-        Nine
+        Nine,
+
+        //Function Keys
+        F1,
+        F2,
+        F3,
+        F4,
+        F5,
+        F6,
+        F7,
+        F8,
+        F9,
+        F10,
+        F11,
+        F12
     }
 }
