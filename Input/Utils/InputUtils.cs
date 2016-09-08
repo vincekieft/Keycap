@@ -13,83 +13,83 @@ namespace Keycap.InputEngine
         public static void initKeyCodes()
         {
             // special keys
-            keys.Add(keyCode.Space, new keyObj(32));
-            keys.Add(keyCode.Backspace, new keyObj(8));
-            keys.Add(keyCode.Tab, new keyObj(9));
-            keys.Add(keyCode.Enter, new keyObj(13));
-            keys.Add(keyCode.Shift, new keyObj(16));
-            keys.Add(keyCode.Ctrl, new keyObj(17));
-            keys.Add(keyCode.Pause, new keyObj(18));
-            keys.Add(keyCode.CapsLock, new keyObj(20));
-            keys.Add(keyCode.Esc, new keyObj(27));
-            keys.Add(keyCode.PageUp, new keyObj(33));
-            keys.Add(keyCode.PageDown, new keyObj(34));
-            keys.Add(keyCode.End, new keyObj(35));
-            keys.Add(keyCode.Home, new keyObj(36));
-            keys.Add(keyCode.Left, new keyObj(37));
-            keys.Add(keyCode.Up, new keyObj(38));
-            keys.Add(keyCode.Right, new keyObj(39));
-            keys.Add(keyCode.Down, new keyObj(40));
-            keys.Add(keyCode.Select, new keyObj(41));
-            keys.Add(keyCode.PrintScreen, new keyObj(42));
-            keys.Add(keyCode.Ins, new keyObj(45));
-            keys.Add(keyCode.Del, new keyObj(46));
-            keys.Add(keyCode.NumLock, new keyObj(144));
+            keys.Add(KeyCode.Space, new keyObj(32));
+            keys.Add(KeyCode.Backspace, new keyObj(8));
+            keys.Add(KeyCode.Tab, new keyObj(9));
+            keys.Add(KeyCode.Enter, new keyObj(13));
+            keys.Add(KeyCode.Shift, new keyObj(16));
+            keys.Add(KeyCode.Ctrl, new keyObj(17));
+            keys.Add(KeyCode.Pause, new keyObj(18));
+            keys.Add(KeyCode.CapsLock, new keyObj(20));
+            keys.Add(KeyCode.Esc, new keyObj(27));
+            keys.Add(KeyCode.PageUp, new keyObj(33));
+            keys.Add(KeyCode.PageDown, new keyObj(34));
+            keys.Add(KeyCode.End, new keyObj(35));
+            keys.Add(KeyCode.Home, new keyObj(36));
+            keys.Add(KeyCode.Left, new keyObj(37));
+            keys.Add(KeyCode.Up, new keyObj(38));
+            keys.Add(KeyCode.Right, new keyObj(39));
+            keys.Add(KeyCode.Down, new keyObj(40));
+            keys.Add(KeyCode.Select, new keyObj(41));
+            keys.Add(KeyCode.PrintScreen, new keyObj(42));
+            keys.Add(KeyCode.Ins, new keyObj(45));
+            keys.Add(KeyCode.Del, new keyObj(46));
+            keys.Add(KeyCode.NumLock, new keyObj(144));
 
             // letters
-            keys.Add(keyCode.A, new keyObj(65));
-            keys.Add(keyCode.B, new keyObj(66));
-            keys.Add(keyCode.C, new keyObj(67));
-            keys.Add(keyCode.D, new keyObj(68));
-            keys.Add(keyCode.E, new keyObj(69));
-            keys.Add(keyCode.F, new keyObj(70));
-            keys.Add(keyCode.G, new keyObj(71));
-            keys.Add(keyCode.H, new keyObj(72));
-            keys.Add(keyCode.I, new keyObj(73));
-            keys.Add(keyCode.J, new keyObj(74));
-            keys.Add(keyCode.K, new keyObj(75));
-            keys.Add(keyCode.L, new keyObj(76));
-            keys.Add(keyCode.M, new keyObj(77));
-            keys.Add(keyCode.N, new keyObj(78));
-            keys.Add(keyCode.O, new keyObj(79));
-            keys.Add(keyCode.P, new keyObj(80));
-            keys.Add(keyCode.Q, new keyObj(81));
-            keys.Add(keyCode.R, new keyObj(82));
-            keys.Add(keyCode.S, new keyObj(83));
-            keys.Add(keyCode.T, new keyObj(84));
-            keys.Add(keyCode.U, new keyObj(85));
-            keys.Add(keyCode.V, new keyObj(86));
-            keys.Add(keyCode.W, new keyObj(87));
-            keys.Add(keyCode.X, new keyObj(88));
-            keys.Add(keyCode.Y, new keyObj(89));
-            keys.Add(keyCode.Z, new keyObj(90));
+            keys.Add(KeyCode.A, new keyObj(65));
+            keys.Add(KeyCode.B, new keyObj(66));
+            keys.Add(KeyCode.C, new keyObj(67));
+            keys.Add(KeyCode.D, new keyObj(68));
+            keys.Add(KeyCode.E, new keyObj(69));
+            keys.Add(KeyCode.F, new keyObj(70));
+            keys.Add(KeyCode.G, new keyObj(71));
+            keys.Add(KeyCode.H, new keyObj(72));
+            keys.Add(KeyCode.I, new keyObj(73));
+            keys.Add(KeyCode.J, new keyObj(74));
+            keys.Add(KeyCode.K, new keyObj(75));
+            keys.Add(KeyCode.L, new keyObj(76));
+            keys.Add(KeyCode.M, new keyObj(77));
+            keys.Add(KeyCode.N, new keyObj(78));
+            keys.Add(KeyCode.O, new keyObj(79));
+            keys.Add(KeyCode.P, new keyObj(80));
+            keys.Add(KeyCode.Q, new keyObj(81));
+            keys.Add(KeyCode.R, new keyObj(82));
+            keys.Add(KeyCode.S, new keyObj(83));
+            keys.Add(KeyCode.T, new keyObj(84));
+            keys.Add(KeyCode.U, new keyObj(85));
+            keys.Add(KeyCode.V, new keyObj(86));
+            keys.Add(KeyCode.W, new keyObj(87));
+            keys.Add(KeyCode.X, new keyObj(88));
+            keys.Add(KeyCode.Y, new keyObj(89));
+            keys.Add(KeyCode.Z, new keyObj(90));
 
 
             // numbers
-            keys.Add(keyCode.Zero, new keyObj(48));
-            keys.Add(keyCode.One, new keyObj(49));
-            keys.Add(keyCode.Two, new keyObj(50));
-            keys.Add(keyCode.Three, new keyObj(51));
-            keys.Add(keyCode.Four, new keyObj(52));
-            keys.Add(keyCode.Five, new keyObj(53));
-            keys.Add(keyCode.Six, new keyObj(54));
-            keys.Add(keyCode.Seven, new keyObj(55));
-            keys.Add(keyCode.Eight, new keyObj(56));
-            keys.Add(keyCode.Nine, new keyObj(57));
+            keys.Add(KeyCode.Zero, new keyObj(48));
+            keys.Add(KeyCode.One, new keyObj(49));
+            keys.Add(KeyCode.Two, new keyObj(50));
+            keys.Add(KeyCode.Three, new keyObj(51));
+            keys.Add(KeyCode.Four, new keyObj(52));
+            keys.Add(KeyCode.Five, new keyObj(53));
+            keys.Add(KeyCode.Six, new keyObj(54));
+            keys.Add(KeyCode.Seven, new keyObj(55));
+            keys.Add(KeyCode.Eight, new keyObj(56));
+            keys.Add(KeyCode.Nine, new keyObj(57));
 
             // function keys
-            keys.Add(keyCode.F1, new keyObj(112));
-            keys.Add(keyCode.F2, new keyObj(113));
-            keys.Add(keyCode.F3, new keyObj(114));
-            keys.Add(keyCode.F4, new keyObj(115));
-            keys.Add(keyCode.F5, new keyObj(116));
-            keys.Add(keyCode.F6, new keyObj(117));
-            keys.Add(keyCode.F7, new keyObj(118));
-            keys.Add(keyCode.F8, new keyObj(119));
-            keys.Add(keyCode.F9, new keyObj(120));
-            keys.Add(keyCode.F10, new keyObj(121));
-            keys.Add(keyCode.F11, new keyObj(122));
-            keys.Add(keyCode.F12, new keyObj(123));
+            keys.Add(KeyCode.F1, new keyObj(112));
+            keys.Add(KeyCode.F2, new keyObj(113));
+            keys.Add(KeyCode.F3, new keyObj(114));
+            keys.Add(KeyCode.F4, new keyObj(115));
+            keys.Add(KeyCode.F5, new keyObj(116));
+            keys.Add(KeyCode.F6, new keyObj(117));
+            keys.Add(KeyCode.F7, new keyObj(118));
+            keys.Add(KeyCode.F8, new keyObj(119));
+            keys.Add(KeyCode.F9, new keyObj(120));
+            keys.Add(KeyCode.F10, new keyObj(121));
+            keys.Add(KeyCode.F11, new keyObj(122));
+            keys.Add(KeyCode.F12, new keyObj(123));
         }
 
         public static keycodes getInstance()
@@ -97,7 +97,7 @@ namespace Keycap.InputEngine
             return single = single == null ? new keycodes() : single;
         }
 
-        public static Dictionary<keyCode, keyObj> keys = new Dictionary<keyCode, keyObj>();
+        public static Dictionary<KeyCode, keyObj> keys = new Dictionary<KeyCode, keyObj>();
 
         public static void setPressed(int id,bool press)
         {
@@ -137,7 +137,7 @@ namespace Keycap.InputEngine
 
         public static void refreshCallbacks(int keyID,inputTypes inputType)
         {
-            keyCode key = getKeyNameByID(keyID);
+            KeyCode key = getKeyNameByID(keyID);
             List<keyRegister> keys = getAllRegisterdByKey(key);
             if(keys.Count > 0)
             {
@@ -174,12 +174,12 @@ namespace Keycap.InputEngine
             }
         }
 
-        public static void registerKey(keyCode key, registerCallback callback,inputTypes inputType)
+        public static void registerKey(KeyCode key, registerCallback callback,inputTypes inputType)
         {
             registerdKeys.Add(new keyRegister(callback,key, inputType));
         }
 
-        public static void cleanListOf(keyCode key,inputTypes input, bool force = false)
+        public static void cleanListOf(KeyCode key,inputTypes input, bool force = false)
         {
             bool found = false;
             foreach(keyRegister rKey in registerdKeys)
@@ -225,14 +225,14 @@ namespace Keycap.InputEngine
         {
             return keys.FirstOrDefault(x => x.Value.VirtualCode == id).Value;
         }
-        public static keyCode getKeyNameByID(int id)
+        public static KeyCode getKeyNameByID(int id)
         {
             return keys.FirstOrDefault(x => x.Value.VirtualCode == id).Key;
         }
 
         
 
-        public static List<keyRegister> getAllRegisterdByKey(keyCode key)
+        public static List<keyRegister> getAllRegisterdByKey(KeyCode key)
         {
             List<keyRegister> returnList = new List<keyRegister>();
             foreach (keyRegister rKey in registerdKeys)
@@ -305,16 +305,16 @@ namespace Keycap.InputEngine
     public class keyRegister
     {
         private keycodes.registerCallback callback;
-        private keyCode key;
+        private KeyCode key;
         private inputTypes inputType;
-        public keyRegister(keycodes.registerCallback callback,keyCode key,inputTypes inputType)
+        public keyRegister(keycodes.registerCallback callback, KeyCode key,inputTypes inputType)
         {
             this.key = key;
             this.callback = callback;
             this.inputType = inputType;
         }
 
-        public keyCode getKeyCode()
+        public KeyCode getKeyCode()
         {
             return this.key;
         }
@@ -333,7 +333,7 @@ namespace Keycap.InputEngine
 
 namespace Keycap
 {
-    public enum keyCode
+    public enum KeyCode
     {
         // special buttons
         Space,

@@ -23,7 +23,7 @@ namespace Keycap
         /// </summary>
         /// <param name="code"></param>
         /// <returns>Returns true or false</returns>
-        public static bool onKeyDown(keyCode code)
+        public static bool onKeyDown(KeyCode code)
         {
             keyObj key = keycodes.keys[code];
             if(key != null)
@@ -46,7 +46,7 @@ namespace Keycap
         /// </summary>
         /// <param name="code"></param>
         /// <returns>Returns true or false</returns>
-        public static bool onKeyUp(keyCode code)
+        public static bool onKeyUp(KeyCode code)
         {
             keyObj key = keycodes.keys[code];
             if (key != null)
@@ -69,7 +69,7 @@ namespace Keycap
         /// </summary>
         /// <param name="code"></param>
         /// <returns>Returns true or false</returns>
-        public static bool onKeyPressed(keyCode code)
+        public static bool onKeyPressed(KeyCode code)
         {
             keyObj key = keycodes.keys[code];
             if (key != null)
@@ -90,7 +90,7 @@ namespace Keycap
         /// <param name="code">The keycode you want to use, for example: KeyCode.Space</param>
         /// <param name="callback">The void that you want the system to callback once the given key is pressed</param>
         /// <param name="repeat">Do you want the event to stay alive after the first event.</param>
-        public static void registerOnKeyDown(keyCode code, keycodes.registerCallback callback, bool repeat = false)
+        public static void registerOnKeyDown(KeyCode code, keycodes.registerCallback callback, bool repeat = false)
         {
             if (repeat)
             {
@@ -108,7 +108,7 @@ namespace Keycap
         /// </summary>
         /// <param name="code">The keycode you want to use, for example: KeyCode.Space</param>
         /// <param name="callback">The void that you want the system to callback once the given key is pressed</param>
-        public static void registerOnKeyPressed(keyCode code, keycodes.registerCallback callback)
+        public static void registerOnKeyPressed(KeyCode code, keycodes.registerCallback callback)
         {
             keycodes.registerKey(code, callback, inputTypes.pressed);
         }
@@ -121,7 +121,7 @@ namespace Keycap
         /// <param name="code">The keycode you want to use, for example: KeyCode.Space</param>
         /// <param name="callback">The void that you want the system to callback once the given key is pressed</param>
         /// <param name="repeat">Do you want the event to stay alive after the first event.</param>
-        public static void registerOnKeyUp(keyCode code,keycodes.registerCallback callback, bool repeat = false)
+        public static void registerOnKeyUp(KeyCode code,keycodes.registerCallback callback, bool repeat = false)
         {
             if (repeat)
             {
@@ -136,7 +136,7 @@ namespace Keycap
         /// Remove all the registerd events from a key
         /// </summary>
         /// <param name="code">The key you want to target</param>
-        public static void removeKeyRegister(keyCode code)
+        public static void removeKeyRegister(KeyCode code)
         {
             keycodes.cleanListOf(code,inputTypes.up,true);
         }
