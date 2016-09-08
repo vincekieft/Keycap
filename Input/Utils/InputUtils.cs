@@ -9,6 +9,8 @@ namespace Keycap.InputEngine
         public delegate void registerCallback();
         public static keycodes single;
         private static List<keyRegister> registerdKeys = new List<keyRegister>();
+        private static List<KeyComObj> registerdCombs = new List<KeyComObj>();
+        private static List<KeyCode> pressedKeys = new List<KeyCode>();
 
         public static void initKeyCodes()
         {
@@ -17,8 +19,12 @@ namespace Keycap.InputEngine
             keys.Add(KeyCode.Backspace, new keyObj(8));
             keys.Add(KeyCode.Tab, new keyObj(9));
             keys.Add(KeyCode.Enter, new keyObj(13));
-            keys.Add(KeyCode.Shift, new keyObj(16));
-            keys.Add(KeyCode.Ctrl, new keyObj(17));
+            keys.Add(KeyCode.LeftShift, new keyObj(160));
+            keys.Add(KeyCode.RightShift, new keyObj(161));
+            keys.Add(KeyCode.LeftCtrl, new keyObj(162));
+            keys.Add(KeyCode.RightCtrl, new keyObj(163));
+            keys.Add(KeyCode.LeftAlt, new keyObj(164));
+            keys.Add(KeyCode.RightAlt, new keyObj(165));
             keys.Add(KeyCode.Pause, new keyObj(18));
             keys.Add(KeyCode.CapsLock, new keyObj(20));
             keys.Add(KeyCode.Esc, new keyObj(27));
@@ -102,10 +108,17 @@ namespace Keycap.InputEngine
         public static void setPressed(int id,bool press)
         {
             keyObj matchedKeys = getKeyByID(id);
+            KeyCode KeyCode = getKeyNameByID(id);
             if (matchedKeys != null)
             {
                 if (press)
                 {
+                    // press list
+                    if (!pressedKeys.Contains(KeyCode))
+                    {
+                        pressedKeys.Add(KeyCode);
+                    }
+
                     // down
                     if (matchedKeys.isPres)
                     {
@@ -117,6 +130,12 @@ namespace Keycap.InputEngine
                     matchedKeys.isPres = true;
                 } else
                 {
+                    // press list
+                    if (pressedKeys.Contains(KeyCode))
+                    {
+                        pressedKeys.Remove(KeyCode);
+                    }
+
                     // up
                     if (matchedKeys.isPres)
                     {
@@ -129,10 +148,22 @@ namespace Keycap.InputEngine
                     matchedKeys.isPres = false;
                 }
             }
-            else
+        }
+
+        private static void logList()
+        {
+            if (pressedKeys.Count > 0)
             {
-                Console.WriteLine("unknown key");
+                Console.Write(pressedKeys[0]);
+                if(pressedKeys.Count >= 1)
+                {
+                    for (int i = 1; i < pressedKeys.Count; i++)
+                    {
+                        Console.Write(" / "+pressedKeys[i]);
+                    }
+                }
             }
+            Console.WriteLine(" ");
         }
 
         public static void refreshCallbacks(int keyID,inputTypes inputType)
@@ -172,11 +203,126 @@ namespace Keycap.InputEngine
                 }
                 cleanListOf(key,inputType);
             }
+            if(inputType == inputTypes.up)
+            {
+                reopenMultipleCallbacks(key);
+            }
+            // last
+            refreshMultipleCallbacks();
+
+        }
+
+        public static void removeKeyCombination(KeyCode[] keys)
+        {
+            bool repeat = false;
+            for (int v = 0; v < registerdCombs.Count; v++)
+            {
+                KeyComObj obj = registerdCombs[v];
+                if (keys.Length == obj.getList().Count)
+                {
+                    bool remove = true;
+                    for (int i = 0; i < keys.Length; i++)
+                    {
+                        if (keys[i] != obj.getList()[i])
+                        {
+                            remove = false;
+                            break;
+                        }
+                    }
+                    if (remove)
+                    {
+                        repeat = true;
+                        registerdCombs.Remove(obj);
+                    }
+                }
+            }
+            if (repeat)
+            {
+                removeKeyCombination(keys);
+            }
+        }
+        
+        public static void clearKeyComb()
+        {
+            registerdCombs.Clear();
+        }
+
+        public static void refreshMultipleCallbacks()
+        {
+            bool repeat = false;
+            for (int i = 0; i < registerdCombs.Count; i++)
+            {
+                KeyComObj obj = registerdCombs[i];
+                if (checkCombination(obj.getList()))
+                {
+                    if (obj.isActive())
+                    {
+                        obj.Invoke();
+                        obj.setWaitForChange(true);
+                        if (!obj.getRepeat())
+                        {
+                            repeat = true;
+                            registerdCombs.Remove(obj);
+                            break;
+                        }
+                    }
+                }
+            }
+            if (repeat)
+            {
+                refreshMultipleCallbacks();
+            }
+        }
+
+        private static void reopenMultipleCallbacks(KeyCode key)
+        {
+            foreach (KeyComObj obj in registerdCombs)
+            {
+                if (obj.getList().Contains(key))
+                {
+                    obj.setWaitForChange(false);
+                }
+            }
         }
 
         public static void registerKey(KeyCode key, registerCallback callback,inputTypes inputType)
         {
             registerdKeys.Add(new keyRegister(callback,key, inputType));
+        }
+
+        public static void registerKeyComb(List<KeyCode> keys, registerCallback callback, bool repeat,bool wait)
+        {
+            registerdCombs.Add(new KeyComObj(keys,callback,repeat,wait));
+        }
+
+        private static bool checkCombination(List<KeyCode> CheckKeys)
+        {
+            bool fire = false;
+            int lastInt = 0;
+            foreach (KeyCode key in CheckKeys)
+            {
+                if (pressedKeys.Contains(key))
+                {
+                    int index = pressedKeys.IndexOf(key);
+                    if(index >= lastInt)
+                    {
+                        // Good
+                        fire = true;
+                        lastInt = index;
+                    } else
+                    {
+                        fire = false;
+                        break;
+                    }
+                } else
+                {
+                    fire = false;
+                    break;
+                }
+            }
+
+            // return res
+            return fire;
         }
 
         public static void cleanListOf(KeyCode key,inputTypes input, bool force = false)
@@ -220,6 +366,7 @@ namespace Keycap.InputEngine
                 cleanListOf(key, input, force);
             }
         }
+
 
         public static keyObj getKeyByID(int id)
         {
@@ -329,6 +476,70 @@ namespace Keycap.InputEngine
             callback.Invoke();
         }
     }
+
+    public class KeyComObj
+    {
+        private List<KeyCode> keys;
+        private keycodes.registerCallback callback;
+        private bool repeat;
+        private bool waitForChange = false;
+        private bool pressed = false;
+
+        public KeyComObj(List<KeyCode> keys, keycodes.registerCallback callback, bool repeat,bool pressed)
+        {
+            this.keys = keys;
+            this.callback = callback;
+            this.repeat = repeat;
+            this.pressed = pressed;
+        }
+
+        public List<KeyCode> getList()
+        {
+            return keys;
+        }
+
+        public bool getRepeat()
+        {
+            return repeat;
+        }
+
+        public bool isActive()
+        {
+            if (pressed)
+            {
+                return true;
+            } else 
+            if (waitForChange)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
+        public void setWaitForChange(bool wait)
+        {
+            if (pressed)
+            {
+                waitForChange = false;
+            }
+            else
+            {
+                waitForChange = wait;
+            }
+        }
+
+        public void Invoke()
+        {
+            callback.Invoke();
+        }
+
+        public keycodes.registerCallback getCallback()
+        {
+            return callback;
+        }
+    }
 }
 
 namespace Keycap
@@ -339,10 +550,13 @@ namespace Keycap
         Space,
         Tab,
         Enter,
-        Shift,
+        LeftShift,
+        RightShift,
         Backspace,
-        Ctrl,
-        Alt,
+        LeftCtrl,
+        RightCtrl,
+        LeftAlt,
+        RightAlt,
         Pause,
         CapsLock,
         Esc,

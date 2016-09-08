@@ -19,10 +19,11 @@ Now Keycab is setup and ready to use.
 
 #How to use?
 Keycab knows 8 different methods you can use.
-The methods are divided under 3 different categories:
+The methods are divided under 4 different categories:
 
 - OnUpdateInput
 - RegisteredEvents
+- RegisterdMultipleKeyEvents
 - Remove
 
 ###### On Update Input
@@ -67,11 +68,33 @@ Use the registered events like this:
 	Input.registerOnKeyUp(KeyCode.Space,CallbackVoid,true);
 ```
 
+###### Registerd Multiple Key Events
+The registered multiple key events are meant to detect when a certain key combination is pressed in a specific order.
+You can use it like this:
+```c#
+	// This events calls the given callback when the key combination Ctrl + Alt + C is pressed
+	// First parm: The void to callback
+	// Second parm: If you want this event to be repeated yes or not
+	// Thirth parm: The key combination seperated by a komma
+	Input.registerOnMultipleKeysDown(CallbackVoid,true,KeyCode.LeftCtrl,KeyCode.LeftAlt,KeyCode.C);
+	
+	// This events calls the given callback when the key combination Ctrl + Alt + C is pressed and held down
+	// First parm: The void to callback
+	// Second parm: The key combination seperated by a komma
+	Input.registerOnMultipleKeysPressed(CallbackVoid,KeyCode.LeftCtrl,KeyCode.LeftAlt,KeyCode.C);
+```
+
 ###### Remove
 If you want to remove a registered event you can just use this function:
 ```c#
 	// remove all the registered events from a key
 	Input.removeKeyRegister(KeyCode.Space);
+	
+	// remove a specific key combination
+	Input.removeKeyCombination(KeyCode.Space,KeyCode.LeftAlt,KeyCode.C);
+	
+	// remove all key combinations
+	Input.removeAllKeyCombinations();
 ```
 
 #What KeyCodes can I use?
@@ -81,10 +104,13 @@ In Keycap you can use a bunch of different KeyCodes.
 - Space
 - Tab
 - Enter
-- Shift
+- LeftShift
+- RightShift
 - Backspace
-- Ctrl
-- Alt
+- LeftCtrl
+- RightCtrl
+- LeftAlt
+- RightAlt
 - Pause
 - CapsLock
 - Esc
