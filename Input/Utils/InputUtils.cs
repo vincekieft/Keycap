@@ -7,17 +7,19 @@ namespace Keycap.InputEngine
     public class keycodes
     {
         public delegate void registerCallback();
+        public delegate void globalRegisterdCallback(string keyText,KeyCode code);
         public static keycodes single;
         private static List<keyRegister> registerdKeys = new List<keyRegister>();
         private static List<KeyComObj> registerdCombs = new List<KeyComObj>();
         private static List<KeyCode> pressedKeys = new List<KeyCode>();
+        private static List<globalRegisterdCallback> registerdGlobalKeys = new List<globalRegisterdCallback>();
 
         public static void initKeyCodes()
         {
             // special keys
-            keys.Add(KeyCode.Space, new keyObj(32));
-            keys.Add(KeyCode.Backspace, new keyObj(8));
-            keys.Add(KeyCode.Tab, new keyObj(9));
+            keys.Add(KeyCode.Space, new keyObj(32, "&#32"));
+            keys.Add(KeyCode.Backspace, new keyObj(8,"&#30"));
+            keys.Add(KeyCode.Tab, new keyObj(9,"&#31"));
             keys.Add(KeyCode.Enter, new keyObj(13));
             keys.Add(KeyCode.LeftShift, new keyObj(160));
             keys.Add(KeyCode.RightShift, new keyObj(161));
@@ -39,49 +41,49 @@ namespace Keycap.InputEngine
             keys.Add(KeyCode.Select, new keyObj(41));
             keys.Add(KeyCode.PrintScreen, new keyObj(42));
             keys.Add(KeyCode.Ins, new keyObj(45));
-            keys.Add(KeyCode.Del, new keyObj(46));
+            keys.Add(KeyCode.Del, new keyObj(46,"&#33"));
             keys.Add(KeyCode.NumLock, new keyObj(144));
 
             // letters
-            keys.Add(KeyCode.A, new keyObj(65));
-            keys.Add(KeyCode.B, new keyObj(66));
-            keys.Add(KeyCode.C, new keyObj(67));
-            keys.Add(KeyCode.D, new keyObj(68));
-            keys.Add(KeyCode.E, new keyObj(69));
-            keys.Add(KeyCode.F, new keyObj(70));
-            keys.Add(KeyCode.G, new keyObj(71));
-            keys.Add(KeyCode.H, new keyObj(72));
-            keys.Add(KeyCode.I, new keyObj(73));
-            keys.Add(KeyCode.J, new keyObj(74));
-            keys.Add(KeyCode.K, new keyObj(75));
-            keys.Add(KeyCode.L, new keyObj(76));
-            keys.Add(KeyCode.M, new keyObj(77));
-            keys.Add(KeyCode.N, new keyObj(78));
-            keys.Add(KeyCode.O, new keyObj(79));
-            keys.Add(KeyCode.P, new keyObj(80));
-            keys.Add(KeyCode.Q, new keyObj(81));
-            keys.Add(KeyCode.R, new keyObj(82));
-            keys.Add(KeyCode.S, new keyObj(83));
-            keys.Add(KeyCode.T, new keyObj(84));
-            keys.Add(KeyCode.U, new keyObj(85));
-            keys.Add(KeyCode.V, new keyObj(86));
-            keys.Add(KeyCode.W, new keyObj(87));
-            keys.Add(KeyCode.X, new keyObj(88));
-            keys.Add(KeyCode.Y, new keyObj(89));
-            keys.Add(KeyCode.Z, new keyObj(90));
+            keys.Add(KeyCode.A, new keyObj(65,"a"));
+            keys.Add(KeyCode.B, new keyObj(66,"b"));
+            keys.Add(KeyCode.C, new keyObj(67,"c"));
+            keys.Add(KeyCode.D, new keyObj(68,"d"));
+            keys.Add(KeyCode.E, new keyObj(69,"e"));
+            keys.Add(KeyCode.F, new keyObj(70,"f"));
+            keys.Add(KeyCode.G, new keyObj(71,"g"));
+            keys.Add(KeyCode.H, new keyObj(72,"h"));
+            keys.Add(KeyCode.I, new keyObj(73,"i"));
+            keys.Add(KeyCode.J, new keyObj(74,"j"));
+            keys.Add(KeyCode.K, new keyObj(75,"k"));
+            keys.Add(KeyCode.L, new keyObj(76,"l"));
+            keys.Add(KeyCode.M, new keyObj(77,"m"));
+            keys.Add(KeyCode.N, new keyObj(78,"n"));
+            keys.Add(KeyCode.O, new keyObj(79,"o"));
+            keys.Add(KeyCode.P, new keyObj(80,"p"));
+            keys.Add(KeyCode.Q, new keyObj(81,"q"));
+            keys.Add(KeyCode.R, new keyObj(82,"r"));
+            keys.Add(KeyCode.S, new keyObj(83,"s"));
+            keys.Add(KeyCode.T, new keyObj(84,"t"));
+            keys.Add(KeyCode.U, new keyObj(85,"u"));
+            keys.Add(KeyCode.V, new keyObj(86,"v"));
+            keys.Add(KeyCode.W, new keyObj(87,"w"));
+            keys.Add(KeyCode.X, new keyObj(88,"x"));
+            keys.Add(KeyCode.Y, new keyObj(89,"y"));
+            keys.Add(KeyCode.Z, new keyObj(90,"z"));
 
 
             // numbers
-            keys.Add(KeyCode.Zero, new keyObj(48));
-            keys.Add(KeyCode.One, new keyObj(49));
-            keys.Add(KeyCode.Two, new keyObj(50));
-            keys.Add(KeyCode.Three, new keyObj(51));
-            keys.Add(KeyCode.Four, new keyObj(52));
-            keys.Add(KeyCode.Five, new keyObj(53));
-            keys.Add(KeyCode.Six, new keyObj(54));
-            keys.Add(KeyCode.Seven, new keyObj(55));
-            keys.Add(KeyCode.Eight, new keyObj(56));
-            keys.Add(KeyCode.Nine, new keyObj(57));
+            keys.Add(KeyCode.Zero, new keyObj(48,"0"));
+            keys.Add(KeyCode.One, new keyObj(49,"1"));
+            keys.Add(KeyCode.Two, new keyObj(50,"2"));
+            keys.Add(KeyCode.Three, new keyObj(51,"3"));
+            keys.Add(KeyCode.Four, new keyObj(52,"4"));
+            keys.Add(KeyCode.Five, new keyObj(53,"5"));
+            keys.Add(KeyCode.Six, new keyObj(54,"6"));
+            keys.Add(KeyCode.Seven, new keyObj(55,"7"));
+            keys.Add(KeyCode.Eight, new keyObj(56,"8"));
+            keys.Add(KeyCode.Nine, new keyObj(57,"9"));
 
             // function keys
             keys.Add(KeyCode.F1, new keyObj(112));
@@ -170,6 +172,7 @@ namespace Keycap.InputEngine
         {
             KeyCode key = getKeyNameByID(keyID);
             List<keyRegister> keys = getAllRegisterdByKey(key);
+            keycodes.refreshGlobalKeys(keycodes.keys[key],key);
             if(keys.Count > 0)
             {
                 foreach (keyRegister rKey in keys)
@@ -210,6 +213,17 @@ namespace Keycap.InputEngine
             // last
             refreshMultipleCallbacks();
 
+        }
+
+        private static void refreshGlobalKeys(keyObj pressedKey,KeyCode code)
+        {
+            if (pressedKey.isDown())
+            {
+                foreach (globalRegisterdCallback call in registerdGlobalKeys)
+                {
+                    call.Invoke(pressedKey.text, code);
+                }
+            }
         }
 
         public static void removeKeyCombination(KeyCode[] keys)
@@ -288,6 +302,16 @@ namespace Keycap.InputEngine
         public static void registerKey(KeyCode key, registerCallback callback,inputTypes inputType)
         {
             registerdKeys.Add(new keyRegister(callback,key, inputType));
+        }
+
+        public static void registerGlobalHook(globalRegisterdCallback callback)
+        {
+            registerdGlobalKeys.Add(callback);
+        }
+
+        public static void clearGlobalkeyHook()
+        {
+            registerdGlobalKeys.Clear();
         }
 
         public static void registerKeyComb(List<KeyCode> keys, registerCallback callback, bool repeat,bool wait)
@@ -405,11 +429,13 @@ namespace Keycap.InputEngine
     {
         public int VirtualCode { get; set; }
         public bool isPres = false;
+        public string text;
         public bool waitForChange = true;
 
-        public keyObj(int VirtualCode)
+        public keyObj(int VirtualCode,string text = "")
         {
             this.VirtualCode = VirtualCode;
+            this.text = text;
         }
 
         public bool isDown()
