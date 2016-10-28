@@ -141,17 +141,6 @@ namespace Keycap
         {
             keycodes.cleanListOf(code,inputTypes.up,true);
         }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Keys"></param>
-        /// <param name="callback"></param>
-        /// <param name="repeat"></param>
-       // public static void (List<KeyCode> Keys, keycodes.registerCallback callback, bool repeat = false)
-        //{
-         //   keycodes.registerKeyComb(Keys,callback,repeat,false);
-        //}
 
         public static void registerOnMultipleKeysDown(keycodes.registerCallback callback,bool repeat, params KeyCode[] keys)
         {

@@ -2,4 +2,4 @@ C:\Users\Stagiair02\documents\visual studio 2015\Projects\Framerate\Keycap\bin\D
 C:\Users\Stagiair02\documents\visual studio 2015\Projects\Framerate\Keycap\bin\Debug\Keycap.pdb
 C:\Users\Stagiair02\documents\visual studio 2015\Projects\Framerate\Keycap\obj\Debug\Keycap.dll
 C:\Users\Stagiair02\documents\visual studio 2015\Projects\Framerate\Keycap\obj\Debug\Keycap.pdb
-C:\Users\Stagiair02\documents\visual studio 2015\Projects\Framerate\Keycap\obj\Debug\Keycap.csprojResolveAssemblyReference.cache
+C:\Users\Stagiair02\Documents\Visual Studio 2015\Projects\Framerate\Keycap\obj\Debug\Keycap.csprojResolveAssemblyReference.cache
