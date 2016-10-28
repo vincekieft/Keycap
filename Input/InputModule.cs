@@ -161,5 +161,15 @@ namespace Keycap
         {
             keycodes.clearKeyComb();
         }
+
+        public static void registerGlobalKeyhook(keycodes.globalRegisterdCallback callback)
+        {
+            keycodes.registerGlobalHook(callback);
+        }
+
+        public static void removeGlobalKeyhooks()
+        {
+            keycodes.clearGlobalkeyHook();
+        }
     }
 }
